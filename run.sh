@@ -11,4 +11,7 @@ executable=$(./build.sh ${src_file})
 trap 'echo -e "\033[32m[Finished running ${src_file%.c}]\033[0m"; rm -f "${executable}"' EXIT
 echo -e "\033[32m[Finished building ${src_file%.c}]\033[0m"
 echo -e "\033[32m[Running ${src_file%.c}]\033[0m"
+
+pushd "$(dirname "${src_file}")" > /dev/null
 "${executable}"
+popd > /dev/null
